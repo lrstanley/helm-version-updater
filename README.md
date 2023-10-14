@@ -3,7 +3,7 @@
   "nodescription": true
 }
 -->
-![logo](https://liam.sh/-/gh/svg/lrstanley/helm-version-updater?icon=logos%3Aprometheus&icon.height=80&bg=topography&layout=left)
+![logo](https://liam.sh/-/gh/svg/lrstanley/helm-version-updater?icon=simple-icons%3Ahelm&icon.height=80&bg=topography&bgcolor=rgba(2%2C+0%2C+26%2C+1)"&layout=left)
 
 <!-- template:begin:header -->
 <!-- do not edit anything in this "template" block, its auto-generated -->
