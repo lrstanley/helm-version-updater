@@ -1,0 +1,62 @@
+name: "helm-version-updater"
+description: "TODO"
+inputs: # make sure all of these are mirrored as environment variables in steps.
+  version:
+    description: "Version of helm-version-updater to use (defaults to the same version as the action)"
+    required: false
+    default: "latest"
+  output-file:
+    description: "output json file containing change set (- for stdout)"
+    required: true
+  check-dir:
+    description: "Directory to recursively check for ci-config.yaml files"
+    required: false
+    default: "."
+  support-prerelease:
+    description: "Support pre-release tags as versions"
+    required: false
+    default: "false"
+outputs:
+  changeset:
+    description: "Change set as JSON"
+    value: ${{ steps.random-number-generator.outputs.random-number }} // TODO
+runs:
+  using: "composite"
+  steps:
+    - name: check-runner-os
+      if: ${{ runner.os != 'Linux' }}
+      shell: bash
+      run: |
+        echo "::error::this action only supports linux runners at this time"
+        exit 1
+    - name: helm-version-updater
+      id: run
+      shell: bash
+      env:
+        VERSION: ${{ inputs.version }}
+        OUTPUT_FILE: ${{ inputs.output-file }}
+        CHECK_DIR: ${{ inputs.check-dir }}
+        SUPPORT_PRERELEASE: ${{ inputs.support-prerelease }}
+      run: |
+        if [ ${{ runner.arch }} = "ARM64" ]; then
+          BINARY_ARCH="arm64"
+        elif [ ${{ runner.arch }} = "ARM" ]; then
+          BINARY_ARCH="arm"
+        elif [ ${{ runner.arch }} = "X86" ]; then
+          BINARY_ARCH="386"
+        elif [ ${{ runner.arch }} = "X64" ]; then
+          BINARY_ARCH="amd64"
+        else
+          BINARY_ARCH="amd64"
+        fi
+
+        if [ "$VERSION" != "latest" ]; then
+          VERSION="v${VERSION#v}"
+        fi
+
+        BINARY="/usr/local/bin/helm-version-updater-${VERSION}"
+
+        curl -sL --output "$BINARY" \
+          "https://github.com/lrstanley/helm-version-updater/releases/download/${VERISON}/helm-version-updater_linux_${BINARY_ARCH}"
+
+        $BINARY
