@@ -38,13 +38,15 @@ runs:
         CHECK_DIR: ${{ inputs.check-dir }}
         SUPPORT_PRERELEASE: ${{ inputs.support-prerelease }}
       run: |
-        if [ ${{ runner.arch }} = "ARM64" ]; then
+        echo "workflow ref: ${GITHUB_WORKFLOW_REF}"
+
+        if [ "$RUNNER_ARCH" == "ARM64" ]; then
           BINARY_ARCH="arm64"
-        elif [ ${{ runner.arch }} = "ARM" ]; then
+        elif [ "$RUNNER_ARCH" == "ARM" ]; then
           BINARY_ARCH="arm"
-        elif [ ${{ runner.arch }} = "X86" ]; then
+        elif [ "$RUNNER_ARCH" == "X86" ]; then
           BINARY_ARCH="386"
-        elif [ ${{ runner.arch }} = "X64" ]; then
+        elif [ "$RUNNER_ARCH" == "X64" ]; then
           BINARY_ARCH="amd64"
         else
           BINARY_ARCH="amd64"
