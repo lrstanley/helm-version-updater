@@ -50,14 +50,17 @@ runs:
           BINARY_ARCH="amd64"
         fi
 
-        if [ "$VERSION" != "latest" ]; then
+        if [ "$VERSION" == "latest" ]; then
+          DOWNLOAD_URL="https://github.com/lrstanley/helm-version-updater/releases/latest/download/helm-version-updater_linux_${BINARY_ARCH}"
+        else
           VERSION="v${VERSION#v}"
+          DOWNLOAD_URL="https://github.com/lrstanley/helm-version-updater/releases/download/${VERSION}/helm-version-updater_linux_${BINARY_ARCH}"
         fi
 
         BINARY="/usr/local/bin/helm-version-updater-${VERSION}"
 
         curl -sL --output "$BINARY" \
-          "https://github.com/lrstanley/helm-version-updater/releases/download/${VERSION}/helm-version-updater_linux_${BINARY_ARCH}"
+          "$DOWNLOAD_URL"
 
         chmod +x "$BINARY"
 
