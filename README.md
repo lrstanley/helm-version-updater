@@ -63,10 +63,8 @@
 ## :link: Table of Contents
 
   - [Why](#grey_question-why)
-  - [Installation](#computer-installation)
-    - [Source](#toolbox-source)
   - [Usage](#gear-usage)
-  - [Build from Source](#build-from-source)
+    - [Build from Source](#build-from-source)
   - [Support &amp; Assistance](#raising_hand_man-support--assistance)
   - [Contributing](#handshake-contributing)
   - [License](#balance_scale-license)
