@@ -18,3 +18,10 @@ jobs:
     uses: lrstanley/.github/.github/workflows/lang-go-lint.yml@master
     secrets:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+  action-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lrstanley/helm-version-updater@master
+        with:
+          check-dir: tests/

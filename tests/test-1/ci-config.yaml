@@ -1,0 +1,2 @@
+source:
+  image: ghcr.io/lrstanley/autodelete-docker

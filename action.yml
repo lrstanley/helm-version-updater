@@ -7,7 +7,7 @@ inputs: # make sure all of these are mirrored as environment variables in steps.
     default: "latest"
   output-file:
     description: "output json file containing change set (- for stdout)"
-    required: true
+    default: "-"
   check-dir:
     description: "Directory to recursively check for ci-config.yaml files"
     required: false
