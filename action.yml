@@ -6,7 +6,7 @@ branding:
 inputs: # make sure all of these are mirrored as environment variables in steps.
   version:
     description: "Version of helm-version-updater to use (defaults to the same version as the action)"
-    default: "v1.0.3"
+    default: "v1.0.4"
   output-file:
     description: "Output json file containing change set (- for stdout)"
     default: "-"
@@ -22,7 +22,7 @@ inputs: # make sure all of these are mirrored as environment variables in steps.
 outputs:
   changeset:
     description: "Change set as JSON"
-    value: ${{ steps.random-number-generator.outputs.random-number }} // TODO
+    value: ${{ steps.run.outputs.changeset }}
 runs:
   using: "composite"
   steps:
