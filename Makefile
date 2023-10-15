@@ -38,7 +38,10 @@ go-dlv: go-prepare
 		${PACKAGE} -- --debug
 
 go-debug: go-prepare
-	go run ${PACKAGE} --debug
+	go run ${PACKAGE} \
+		--debug \
+		--dry-run \
+		--check-dir ./tests/
 
 go-build: go-prepare
 	CGO_ENABLED=0 \
