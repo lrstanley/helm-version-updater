@@ -54,7 +54,7 @@ runs:
           VERSION="v${VERSION#v}"
         fi
 
-        BINARY="/usr/local/bin/helm-version-updater-${VERSION}"
+        BINARY="/usr/bin/helm-version-updater-${VERSION}"
 
         curl -sL --output "$BINARY" \
           "https://github.com/lrstanley/helm-version-updater/releases/download/${VERISON}/helm-version-updater_linux_${BINARY_ARCH}"
