@@ -80,7 +80,7 @@ func main() {
 			githubactions.Fatalf("failed to parse chart.yaml file: %s", err)
 		}
 
-		githubactions.Infof(
+		githubactions.Noticef(
 			"chart metadata name:%q description:%q version:%q appVersion: %q",
 			chart.Name,
 			chart.Description,
@@ -101,7 +101,7 @@ func main() {
 	}
 
 	if len(changeset.Changes) == 0 {
-		githubactions.Infof("no changes to chart versions detected")
+		githubactions.Noticef("no changes to chart versions detected")
 	}
 
 	err = changeset.Write()

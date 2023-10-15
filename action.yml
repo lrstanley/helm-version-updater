@@ -1,12 +1,12 @@
 name: "helm-version-updater"
-description: "TODO"
+description: "github action for syncing appVersion to docker image tags (and similar)"
 inputs: # make sure all of these are mirrored as environment variables in steps.
   version:
     description: "Version of helm-version-updater to use (defaults to the same version as the action)"
     required: false
     default: "latest"
   output-file:
-    description: "output json file containing change set (- for stdout)"
+    description: "Output json file containing change set (- for stdout)"
     default: "-"
   check-dir:
     description: "Directory to recursively check for ci-config.yaml files"
@@ -38,7 +38,7 @@ runs:
         CHECK_DIR: ${{ inputs.check-dir }}
         SUPPORT_PRERELEASE: ${{ inputs.support-prerelease }}
       run: |
-        echo "workflow ref: ${GITHUB_WORKFLOW_REF}"
+        env
 
         if [ "$RUNNER_ARCH" == "ARM64" ]; then
           BINARY_ARCH="arm64"

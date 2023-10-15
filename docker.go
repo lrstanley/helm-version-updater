@@ -57,8 +57,8 @@ func CheckImageUpdates(chart *Chart) (change *Change, err error) {
 
 	if chart.AppVersion.LessThan(latest) {
 		chart.SetAppVersion(latest)
-		githubactions.Infof("updating chart %q app version from %q to %q", chart.Name, chart.OriginalAppVersion, chart.AppVersion.String())
-		githubactions.Infof("updating chart %q main version from %q to %q", chart.Name, chart.OriginalVersion, chart.Version.String())
+		githubactions.Noticef("updating chart %q app version from %q to %q", chart.Name, chart.OriginalAppVersion, chart.AppVersion.String())
+		githubactions.Noticef("updating chart %q main version from %q to %q", chart.Name, chart.OriginalVersion, chart.Version.String())
 
 		err = chart.WriteUpdatedVersions()
 		if err != nil {
@@ -74,6 +74,6 @@ func CheckImageUpdates(chart *Chart) (change *Change, err error) {
 		}, nil
 	}
 
-	githubactions.Infof("chart %q is already up-to-date", chart.Name)
+	githubactions.Noticef("chart %q is already up-to-date", chart.Name)
 	return nil, nil //nolint:nilnil // no error, just no change.
 }
