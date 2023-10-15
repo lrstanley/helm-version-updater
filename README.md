@@ -66,6 +66,7 @@
   - [Installation](#computer-installation)
     - [Source](#toolbox-source)
   - [Usage](#gear-usage)
+  - [Build from Source](#build-from-source)
   - [Support &amp; Assistance](#raising_hand_man-support--assistance)
   - [Contributing](#handshake-contributing)
   - [License](#balance_scale-license)
@@ -73,26 +74,53 @@
 
 ## :grey_question: Why
 
-TODO
+Multiple of my helm charts have their `appVersion` synced with docker images. With this
+GitHub action, I can easily automatically update the chart versions, even through a PR
+workflow.
 
-## :computer: Installation
+## :gear: Usage
 
-TODO
+```yaml
+name: helm-version-updater
 
-Check out the [releases](https://github.com/users/lrstanley/helm-version-updater/pkgs/container/helm-version-updater)
-page for prebuilt versions.
+on:
+  schedule:
+    - cron: "0 13 * * *" # run once a day.
+  workflow_dispatch: {} # be able to trigger manually.
 
-### :toolbox: Source
+jobs:
+  helm-version-updater:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lrstanley/helm-version-updater@latest
+        with:
+          check-dir: charts/
+```
+
+-------------------------
+
+Full list of supported options specified below.
+
+| input name         | required | default            | description                                                                         |
+|--------------------|----------|--------------------|-------------------------------------------------------------------------------------|
+| version            | false    | `<latest-version>` | Version of helm-version-updater to use (defaults to the same version as the action) |
+| output-file        | false    | `-`                | Output json file containing change set (- for stdout)                               |
+| check-dir          | false    | `.`                | Directory to recursively check for ci-config.yaml files                             |
+| support-prerelease | false    | `false`            | Support pre-release tags as versions                                                |
+
+-------------------------
+
+Check out the [releases](https://github.com/lrstanley/helm-version-updater/releases)
+page for prebuilt versions of the binary.
+
+### Build from Source
 
 Note that you must have [Go](https://golang.org/doc/install) installed (latest is usually best).
 
     git clone https://github.com/lrstanley/helm-version-updater.git && cd helm-version-updater
     make
     ./helm-version-updater --help
-
-## :gear: Usage
-
-TODO
 
 <!-- template:begin:support -->
 <!-- do not edit anything in this "template" block, its auto-generated -->
