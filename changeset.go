@@ -22,6 +22,7 @@ type ChangeSet struct {
 
 type Change struct {
 	Chart         *Chart `json:"chart"`
+	Path          string `json:"path"`
 	OldVersion    string `json:"old_version"`
 	NewVersion    string `json:"new_version"`
 	OldAppVersion string `json:"old_app_version"`

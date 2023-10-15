@@ -5,6 +5,7 @@
 package main
 
 import (
+	"path/filepath"
 	"sort"
 
 	"github.com/Masterminds/semver/v3"
@@ -69,6 +70,7 @@ func CheckImageUpdates(config *Flags, chart *Chart) (change *Change, err error) 
 
 		return &Change{
 			Chart:         chart,
+			Path:          filepath.Dir(chart.Path),
 			OldVersion:    chart.OriginalVersion,
 			NewVersion:    chart.Version.String(),
 			OldAppVersion: chart.OriginalAppVersion,
