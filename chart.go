@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 
 	"github.com/Masterminds/semver/v3"
 	"gopkg.in/yaml.v3"
@@ -79,8 +80,19 @@ func (c *Chart) WriteUpdatedVersions() error {
 		return err
 	}
 
-	reVersionMatcher.ReplaceAll(body, []byte("version: "+c.Version.String()))
-	reAppVersionMatcher.ReplaceAll(body, []byte("appVersion: "+c.AppVersion.String()))
+	v := strings.TrimPrefix(c.Version.String(), "v")
+	appv := strings.TrimPrefix(c.AppVersion.String(), "v")
+
+	if strings.HasPrefix(c.OriginalVersion, "v") {
+		v = "v" + v
+	}
+
+	if strings.HasPrefix(c.OriginalAppVersion, "v") {
+		appv = "v" + appv
+	}
+
+	reVersionMatcher.ReplaceAll(body, []byte("version: "+v))
+	reAppVersionMatcher.ReplaceAll(body, []byte("appVersion: "+appv))
 
 	return os.WriteFile(c.Path, body, 0o600)
 }
