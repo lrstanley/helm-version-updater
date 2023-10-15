@@ -91,8 +91,8 @@ func (c *Chart) WriteUpdatedVersions() error {
 		appv = "v" + appv
 	}
 
-	reVersionMatcher.ReplaceAll(body, []byte("version: "+v))
-	reAppVersionMatcher.ReplaceAll(body, []byte("appVersion: "+appv))
+	body = reVersionMatcher.ReplaceAll(body, []byte("version: "+v))
+	body = reAppVersionMatcher.ReplaceAll(body, []byte("appVersion: "+appv))
 
 	return os.WriteFile(c.Path, body, 0o600)
 }
