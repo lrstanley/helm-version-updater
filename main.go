@@ -80,7 +80,7 @@ func main() {
 			githubactions.Fatalf("failed to parse chart.yaml file: %s", err)
 		}
 
-		githubactions.Noticef(
+		githubactions.Infof(
 			"chart metadata name:%q description:%q version:%q appVersion: %q",
 			chart.Name,
 			chart.Description,

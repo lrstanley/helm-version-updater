@@ -7,7 +7,7 @@ inputs: # make sure all of these are mirrored as environment variables in steps.
   version:
     description: "Version of helm-version-updater to use (defaults to the same version as the action)"
     required: false
-    default: "latest"
+    default: "v1.0.0"
   output-file:
     description: "Output json file containing change set (- for stdout)"
     default: "-"
@@ -41,8 +41,6 @@ runs:
         CHECK_DIR: ${{ inputs.check-dir }}
         SUPPORT_PRERELEASE: ${{ inputs.support-prerelease }}
       run: |
-        env
-
         if [ "$RUNNER_ARCH" == "ARM64" ]; then
           BINARY_ARCH="arm64"
         elif [ "$RUNNER_ARCH" == "ARM" ]; then
