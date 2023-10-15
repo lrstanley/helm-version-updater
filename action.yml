@@ -6,18 +6,18 @@ branding:
 inputs: # make sure all of these are mirrored as environment variables in steps.
   version:
     description: "Version of helm-version-updater to use (defaults to the same version as the action)"
-    required: false
     default: "v1.0.0"
   output-file:
     description: "Output json file containing change set (- for stdout)"
     default: "-"
   check-dir:
     description: "Directory to recursively check for ci-config.yaml files"
-    required: false
     default: "."
   support-prerelease:
     description: "Support pre-release tags as versions"
-    required: false
+    default: "false"
+  dry-run:
+    description: "Do not write update Chart.yaml files, only output changeset"
     default: "false"
 outputs:
   changeset:

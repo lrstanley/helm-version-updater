@@ -78,6 +78,16 @@ workflow.
 
 ## :gear: Usage
 
+Create a config file called `ci-config.yaml` in the directory where your `Chart.yaml` is located.
+The contents should look similar to this:
+
+```yaml
+source:
+  image: ghcr.io/user/some-image # standard registry image reference (without tag).
+```
+
+Create a workflow to run helm-version-updater
+
 ```yaml
 name: helm-version-updater
 
@@ -94,6 +104,8 @@ jobs:
       - uses: lrstanley/helm-version-updater@latest
         with:
           check-dir: charts/
+      # likely want to either commit after the above step, or use something like:
+      #   - https://github.com/marketplace/actions/create-pull-request
 ```
 
 -------------------------
@@ -106,6 +118,7 @@ Full list of supported options specified below.
 | output-file        | false    | `-`                | Output json file containing change set (- for stdout)                               |
 | check-dir          | false    | `.`                | Directory to recursively check for ci-config.yaml files                             |
 | support-prerelease | false    | `false`            | Support pre-release tags as versions                                                |
+| dry-run            | false    | `false`            | Do not write update Chart.yaml files, only output changeset                         |
 
 -------------------------
 

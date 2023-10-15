@@ -32,6 +32,7 @@ type Flags struct {
 	OutputFile        string `long:"output-file"         env:"OUTPUT_FILE" default:"-" description:"output json file containing changeset (- for stdout)"`
 	CheckDir          string `long:"check-dir"           env:"CHECK_DIR"   default:"." description:"directory to recursively check for ci-config.yaml files"`
 	SupportPreRelease bool   `long:"support-pre-release" env:"SUPPORT_PRERELEASE"      description:"support pre-release versions when upgrading"`
+	DryRun            bool   `long:"dry-run"             env:"DRY_RUN"                 description:"do not write update Chart.yaml files, only output changeset"`
 }
 
 func main() {

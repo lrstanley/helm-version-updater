@@ -60,9 +60,11 @@ func CheckImageUpdates(chart *Chart) (change *Change, err error) {
 		githubactions.Noticef("updating chart %q app version from %q to %q", chart.Name, chart.OriginalAppVersion, chart.AppVersion.String())
 		githubactions.Noticef("updating chart %q main version from %q to %q", chart.Name, chart.OriginalVersion, chart.Version.String())
 
-		err = chart.WriteUpdatedVersions()
-		if err != nil {
-			return nil, err
+		if !cli.Flags.DryRun {
+			err = chart.WriteUpdatedVersions()
+			if err != nil {
+				return nil, err
+			}
 		}
 
 		return &Change{
