@@ -1,5 +1,8 @@
 name: "helm-version-updater"
 description: "github action for syncing appVersion to docker image tags (and similar)"
+branding:
+  icon: "arrow-up-right"
+  color: "blue"
 inputs: # make sure all of these are mirrored as environment variables in steps.
   version:
     description: "Version of helm-version-updater to use (defaults to the same version as the action)"
