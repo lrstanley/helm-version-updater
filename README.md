@@ -108,6 +108,10 @@ jobs:
       #   - https://github.com/marketplace/actions/create-pull-request
 ```
 
+For a more complex example, take a look at my [personal helm-charts repo](https://github.com/lrstanley/helm-charts/blob/master/.github/workflows/helm-version-updater.yml).
+For each chart, it checks for any updates, and if there are any changes, it will create a pull request
+for each individual chart ([example pull request](https://github.com/lrstanley/helm-charts/pull/11)).
+
 -------------------------
 
 Full list of supported options specified below.
