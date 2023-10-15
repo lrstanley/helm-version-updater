@@ -63,7 +63,4 @@ runs:
           "$DOWNLOAD_URL"
 
         chmod +x "$BINARY"
-
-        env
-
         $BINARY
