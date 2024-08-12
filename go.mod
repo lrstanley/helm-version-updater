@@ -4,7 +4,7 @@ go 1.21.3
 
 require (
 	github.com/Masterminds/semver/v3 v3.2.1
-	github.com/google/go-containerregistry v0.17.0
+	github.com/google/go-containerregistry v0.20.2
 	github.com/lrstanley/clix v1.0.1
 	github.com/sethvargo/go-githubactions v1.2.0
 	gopkg.in/yaml.v3 v3.0.1
@@ -13,9 +13,8 @@ require (
 require (
 	github.com/apex/log v1.9.0 // indirect
 	github.com/containerd/stargz-snapshotter/estargz v0.15.1 // indirect
-	github.com/docker/cli v24.0.7+incompatible // indirect
+	github.com/docker/cli v27.1.1+incompatible // indirect
 	github.com/docker/distribution v2.8.3+incompatible // indirect
-	github.com/docker/docker v24.0.9+incompatible // indirect
 	github.com/docker/docker-credential-helpers v0.8.0 // indirect
 	github.com/fatih/color v1.16.0 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
