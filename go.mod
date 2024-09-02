@@ -3,7 +3,7 @@ module github.com/lrstanley/helm-version-updater
 go 1.21.3
 
 require (
-	github.com/Masterminds/semver/v3 v3.2.1
+	github.com/Masterminds/semver/v3 v3.3.0
 	github.com/google/go-containerregistry v0.17.0
 	github.com/lrstanley/clix v1.0.1
 	github.com/sethvargo/go-githubactions v1.2.0
