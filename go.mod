@@ -6,7 +6,7 @@ require (
 	github.com/Masterminds/semver/v3 v3.2.1
 	github.com/google/go-containerregistry v0.17.0
 	github.com/lrstanley/clix v1.0.1
-	github.com/sethvargo/go-githubactions v1.2.0
+	github.com/sethvargo/go-githubactions v1.3.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
